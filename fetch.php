@@ -5,8 +5,8 @@ if(isset($_POST['request'])){
 
     $request = $_POST['request'];
 
-    $query = "SELECT * FROM post WHERE p_title = ' $request'";
-    $result = mysqli($con, $query);
+    $query = "SELECT * FROM post WHERE p_title = '$request'";
+    $result = mysqli_query($con,$query);
     $count = mysqli_num_rows($result);
 ?>
 
@@ -31,7 +31,7 @@ if($count){
 <?php 
 
 } else {
-    echo "Sorry! no record Found"
+    echo "Sorry! no record Found";
 }
 ?>
 
@@ -41,6 +41,7 @@ if($count){
 
     <?php 
     while($row = mysqli_fetch_assoc($result)){
+
     ?>
 
 <tr>
@@ -53,11 +54,9 @@ if($count){
 
 <?php 
     }
-
 ?>
 </tbody>
 </table>
 <?php 
     }
-
 ?>

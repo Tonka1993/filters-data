@@ -9,7 +9,10 @@ include("config.php");
 <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+  <script
+  src="https://code.jquery.com/jquery-3.6.1.min.js"
+  integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+  crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -26,15 +29,16 @@ include("config.php");
     }
 </style>
 
+
 </head>
 <body>
 <div id="filters">
 <span>Fetch result by &nbsp;</span>
 <select name="fetchval" id="fetchval">
     <option value="" disabled="" selected=""> Select filter </option>
-    <option value="Advertiseme"> Advertiseme </option>
+    <option value="Advertisement"> Advertiseme </option>
     <option value="Technology"> Technology </option>
-    <option value="Fashion"> Fashion </option>
+    <option value="News"> News </option>
     <option value="Education"> Education </option>
 </select>
 </div>
@@ -86,23 +90,23 @@ include("config.php");
 
 <script type="text/javascript">
     $(document).ready(function(){
-        $("#fetchval").on('change',function(){
+        
+        $("#fetchval").on('change', function(){
             var value = $(this).val();
-           // alert(value);
     
             $.ajax({
                 url:"fetch.php",
                 type: "POST",
-                data: 'request=' + value;
+                data: 'request=' + value,
                 beforeSend: function(){
                     $(".container").html("<span>Working...</span>");
                 },
-                success: function(data){
+                success:function(data){
                     $(".container").html(data);
                 }
             });
-        });
+        }); 
     });
-</srcipt>
+</script>
 </body>
 </html>
